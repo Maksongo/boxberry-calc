@@ -21,6 +21,8 @@
 //   }
 // }
 
+// делаем запрос цены и сроков
+
 async function getResponse() {
   let response = await fetch(
     "https://api.boxberry.ru/json.php?token=d6f33e419c16131e5325cbd84d5d6000&method=DeliveryCosts&weight=500&targetstart=010&target=010&ordersum=0&deliverysum=0&height=120&width=80&depth=50&paysum=100"
@@ -32,10 +34,28 @@ async function getResponse() {
 
   let key;
 
-  list.innerHTML += `
-<p>${content.price}</p>
-<p>${delivery_period}</p>
-`;
+  pricer.innerHTML = `Стоимость доставки: ${content.price}`;
+  pricer2.innerHTML = `Срок доставки: ${content.delivery_period}`;
 }
 
 getResponse();
+
+// выводим цену и срок доставки в хтмл
+
+const button = document.querySelector(".but");
+const popup = document.querySelector(".popup-wrapper");
+const close = document.querySelector(".popup-close");
+const pricer = document.querySelector(".pri");
+const pricer2 = document.querySelector(".pri2");
+
+button.addEventListener("click", () => {
+  popup.style.display = "block";
+});
+
+close.addEventListener("click", () => {
+  popup.style.display = "none";
+});
+
+popup.addEventListener("click", () => {
+  popup.style.display = "none";
+});
