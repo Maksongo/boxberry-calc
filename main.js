@@ -21,24 +21,21 @@
 //   }
 // }
 
-const data = null;
+async function getResponse() {
+  let response = await fetch(
+    "https://api.boxberry.ru/json.php?token=d6f33e419c16131e5325cbd84d5d6000&method=DeliveryCosts&weight=500&targetstart=010&target=010&ordersum=0&deliverysum=0&height=120&width=80&depth=50&paysum=100"
+  );
+  let content = await response.json();
+  console.log(content);
 
-let xhr = new XMLHttpRequest();
-xhr.withCredentials = true;
+  let list = document.querySelector(".posts");
 
-xhr.addEventListener("readystatechange", function () {
-  if (this.readyState === this.DONE) {
-  }
-});
+  let key;
 
-const keka = document.querySelector(".but");
-keka.addEventListener("click", () => {
-  console.log(xhr.responseText);
-});
+  list.innerHTML += `
+<p>${content.price}</p>
+<p>${delivery_period}</p>
+`;
+}
 
-xhr.open(
-  "GET",
-  "https://api.boxberry.ru/json.php?token=d6f33e419c16131e5325cbd84d5d6000&method=DeliveryCosts&weight=500&targetstart=010&target=010&ordersum=0&deliverysum=0&height=120&width=80&depth=50&paysum=100"
-);
-
-xhr.send(data);
+getResponse();
