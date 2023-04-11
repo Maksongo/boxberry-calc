@@ -23,22 +23,18 @@
 
 // делаем запрос цены и сроков
 
+// d6f33e419c16131e5325cbd84d5d6000 - токен базовый
+
 async function getResponse() {
   let response = await fetch(
-    "https://api.boxberry.ru/json.php?token=d6f33e419c16131e5325cbd84d5d6000&method=DeliveryCosts&weight=500&targetstart=010&target=010&ordersum=0&deliverysum=0&height=120&width=80&depth=50&paysum=100"
+    `https://api.boxberry.ru/json.php?token=1a0eca0153d19fd9c07637b5d73e917c&method=DeliveryCosts&weight=${ves}&targetstart=010&target=010&ordersum=0&deliverysum=0&height=${dlina}&width=${visota}&depth=${shirina}`
   );
   let content = await response.json();
   console.log(content);
 
-  let list = document.querySelector(".posts");
-
-  let key;
-
-  pricer.innerHTML = `Стоимость доставки: ${content.price}`;
+  pricer.innerHTML = `Стоимость доставки: ${content.price_base}`;
   pricer2.innerHTML = `Срок доставки: ${content.delivery_period}`;
 }
-
-getResponse();
 
 // выводим цену и срок доставки в хтмл
 
@@ -49,6 +45,8 @@ const pricer = document.querySelector(".pri");
 const pricer2 = document.querySelector(".pri2");
 
 button.addEventListener("click", () => {
+  getResponse();
+  console.log(inputFirstDell)
   popup.style.display = "block";
 });
 
@@ -58,4 +56,47 @@ close.addEventListener("click", () => {
 
 popup.addEventListener("click", () => {
   popup.style.display = "none";
+});
+
+// инпуты
+
+// первый город
+let firstDell = document.querySelector(".firstDel")
+let inputFirstDell = '';
+
+firstDell.addEventListener("input", (e) => {
+  inputFirstDell = e.target.value;
+});
+
+
+// вес посылки
+let vesQSelector = document.querySelector('.inputVes')
+let ves = '';
+
+vesQSelector.addEventListener("input", (e) => {
+  ves = e.target.value;
+});
+
+// длина посылки
+let dlinaQSelector = document.querySelector('.inputDlina')
+let dlina = '';
+
+dlinaQSelector.addEventListener("input", (e) => {
+  dlina = e.target.value;
+});
+
+// высота посылки
+let visotaQSelector = document.querySelector('.inputVisota')
+let visota = '';
+
+dlinaQSelector.addEventListener("input", (e) => {
+  visota = e.target.value;
+});
+
+// ширина посылки
+let shirinaQSelector = document.querySelector('.inputShirina')
+let shirina = '';
+
+dlinaQSelector.addEventListener("input", (e) => {
+  shirina = e.target.value;
 });

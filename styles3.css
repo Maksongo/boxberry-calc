@@ -163,7 +163,7 @@ body{
     background-color: #cf1647;
 }
 
-.calculator .one{
+.firstDel, .secondDel{
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
@@ -176,7 +176,7 @@ body{
     
 }
 
-.calculator .two{
+.inputVes, .inputDlina, .inputVisota, .inputShirina{
     padding: 6px 20px;
     margin: 8px 0;
     display: inline-block;
@@ -214,19 +214,9 @@ body{
 .popup{
     font-family: arial;
     text-align: center;
-    width: 100%;
-    max-width: 300;
     margin: 10% auto;
-    padding: 20px;
     background: white;
     position: relative;
-}
-
-.popup a{
-    background: crimson;
-    color: white;
-    text-decoration: none;
-    padding: 6px 10px;
 }
 
 .popup-close{
