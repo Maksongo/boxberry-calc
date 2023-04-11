@@ -1,2 +1,10 @@
-# boxberry-calc
-Calculator of deliviry boxberry
+<image src="https://toplogos.ru/images/logo-boxberry.png" alt="React logo" width="30%">
+  
+# Калькулятор для расчёта стоимости услуг и сроков доставки
+  
+Тарифы в калькуляторе используются, как при отправке от интернет-магазина, т.е. от юридичексого лица
+<br/>
+<br/>  
+<br/>  
+<br/> 
+**Калькулятор написан полностью на ванильном JavaScript**
