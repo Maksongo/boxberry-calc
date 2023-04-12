@@ -23,7 +23,7 @@ const pricer2 = document.querySelector(".pri2");
 
 button.addEventListener("click", () => {
   getResponse();
-  console.log(inputFirstDell)
+  // console.log(inputFirstDell)
   popup.style.display = "block";
 });
 
@@ -40,34 +40,52 @@ popup.addEventListener("click", () => {
 // первый город
 
 async function getCity() {
-  let cities = await fetch(
-    `https://api.boxberry.ru/json.php?token=d6f33e419c16131e5325cbd84d5d6000&method=PointsForParcels`
+  let response = await fetch(
+    'https://api.boxberry.ru/json.php?token=d6f33e419c16131e5325cbd84d5d6000&method=PointsForParcels'
   );
-  let city = await cities.json();
-  console.log(city[15].City);
+  let citiesList = await response.json();
+  let finalList = [];
+  for (var n in citiesList) {
+    finalList.push(citiesList[n].City);
+  }
+  return finalList;
 }
+
+//-------------------------------------------------
+
+getCity().then((list) => {
+  let selectDL = document.querySelector(".kekeke");
+
+  for (var num in list) {
+    let option = document.createElement("option");
+    option.value = list[num];
+    selectDL.appendChild(option);
+  }
+});
 
 
 //-------------------------------------------------
-list = ['Екб','Нск','Мск']
-let selectDL = document.querySelector('.firstDel');
-let option = document.createElement('option');
+// getCities().th
 
-selectDL.appendChild(option);
-console.log(selectDL)
 
-option.value = list[0];
+// let selectDL = document.querySelector("#citySenderList");
+// // let option = document.createElement('option');
+
+// console.log(selectDL);
+
+// for (var num in cityList) {
+//   let option = document.createElement("option");
+//   option.value = cityList[num];
+//   selectDL.appendChild(option);
+// }
 
 // list.forEach( e => {
 //   console.log(e);
-// }); 
-
-
+// });
 
 //    console.log(selectDL);
 
 // var list = ['11','22','33'];
-
 
 // for (var i in list ){
 //   select = document.getElementsByClassName('suggestions');
@@ -77,13 +95,11 @@ option.value = list[0];
 //   select.add(opt);
 // };
 
-
 // function getOption() {
 //   selectElement = document.querySelector('.suggestions');
 //   list = selectElement.value;
 //   document.querySelector('.output').textContent = list;
 // }
-
 
 //-------------------------------------------------
 // getCity()
@@ -94,35 +110,34 @@ option.value = list[0];
 //   inputFirstDell = e.target.value;
 // });
 
-
 // let firstCityCheck = (e) =>{
 //   if(inputFirstDell =
 // }
 //-------------------------------------------------
 
 // вес посылки
-let vesQSelector = document.querySelector('.inputVes')
+let vesQSelector = document.querySelector(".inputVes");
 
 vesQSelector.addEventListener("input", (e) => {
   ves = e.target.value;
 });
 
 // длина посылки
-let dlinaQSelector = document.querySelector('.inputDlina')
+let dlinaQSelector = document.querySelector(".inputDlina");
 
 dlinaQSelector.addEventListener("input", (e) => {
   dlina = e.target.value;
 });
 
 // высота посылки
-let visotaQSelector = document.querySelector('.inputVisota')
+let visotaQSelector = document.querySelector(".inputVisota");
 
 dlinaQSelector.addEventListener("input", (e) => {
   visota = e.target.value;
 });
 
 // ширина посылки
-let shirinaQSelector = document.querySelector('.inputShirina')
+let shirinaQSelector = document.querySelector(".inputShirina");
 
 dlinaQSelector.addEventListener("input", (e) => {
   shirina = e.target.value;
