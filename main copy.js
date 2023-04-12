@@ -1,3 +1,26 @@
+// const priceCheck = document.querySelector(".but");
+
+// priceCheck.addEventListener("click", () => {
+//   boxberry.open(callback_function);
+// });
+
+// function callback_function(result) {
+//   document.getElementById("city").innerHTML = result.name;
+//   document.getElementById("js-pricedelivery").innerHTML = result.price;
+//   document.getElementById("code_pvz").innerHTML = result.id;
+
+//   result.name = encodeURIComponent(result.name); // Что бы избежать проблемы с кириллическими символами, на страницах отличными от UTF8, вы можете использовать функцию encodeURIComponent()
+
+//   document.getElementById("name").innerHTML = result.name;
+//   document.getElementById("address").innerHTML = result.address;
+//   document.getElementById("workschedule").innerHTML = result.workschedule;
+//   document.getElementById("phone").innerHTML = result.phone;
+//   document.getElementById("period").innerHTML = result.period;
+//   if (result.prepaid == "1") {
+//     alert("Отделение работает только по предоплате!");
+//   }
+// }
+
 // делаем запрос цены и сроков
 
 // d6f33e419c16131e5325cbd84d5d6000 - токен базовый
@@ -44,64 +67,26 @@ async function getCity() {
     `https://api.boxberry.ru/json.php?token=d6f33e419c16131e5325cbd84d5d6000&method=PointsForParcels`
   );
   let city = await cities.json();
-  console.log(city[15].City);
+  console.log(city[12].City);
 }
 
+getCity()
+let firstDell = document.querySelector(".firstDel")
+let inputFirstDell = '';
 
-//-------------------------------------------------
-list = ['Екб','Нск','Мск']
-let selectDL = document.querySelector('.firstDel');
-let option = document.createElement('option');
-
-selectDL.appendChild(option);
-console.log(selectDL)
-
-option.value = list[0];
-
-// list.forEach( e => {
-//   console.log(e);
-// }); 
-
-
-
-//    console.log(selectDL);
-
-// var list = ['11','22','33'];
-
-
-// for (var i in list ){
-//   select = document.getElementsByClassName('suggestions');
-//   var opt = document.createElement('option');
-//   opt.value = i;
-//   opt.innerHTML = i;
-//   select.add(opt);
-// };
-
-
-// function getOption() {
-//   selectElement = document.querySelector('.suggestions');
-//   list = selectElement.value;
-//   document.querySelector('.output').textContent = list;
-// }
-
-
-//-------------------------------------------------
-// getCity()
-// let firstDell = document.querySelector(".firstDel")
-// let inputFirstDell = '';
-
-// firstDell.addEventListener("input", (e) => {
-//   inputFirstDell = e.target.value;
-// });
+firstDell.addEventListener("input", (e) => {
+  inputFirstDell = e.target.value;
+});
 
 
 // let firstCityCheck = (e) =>{
 //   if(inputFirstDell =
 // }
-//-------------------------------------------------
+
 
 // вес посылки
 let vesQSelector = document.querySelector('.inputVes')
+let ves = '';
 
 vesQSelector.addEventListener("input", (e) => {
   ves = e.target.value;
@@ -109,6 +94,7 @@ vesQSelector.addEventListener("input", (e) => {
 
 // длина посылки
 let dlinaQSelector = document.querySelector('.inputDlina')
+let dlina = '';
 
 dlinaQSelector.addEventListener("input", (e) => {
   dlina = e.target.value;
@@ -116,6 +102,7 @@ dlinaQSelector.addEventListener("input", (e) => {
 
 // высота посылки
 let visotaQSelector = document.querySelector('.inputVisota')
+let visota = '';
 
 dlinaQSelector.addEventListener("input", (e) => {
   visota = e.target.value;
@@ -123,6 +110,7 @@ dlinaQSelector.addEventListener("input", (e) => {
 
 // ширина посылки
 let shirinaQSelector = document.querySelector('.inputShirina')
+let shirina = '';
 
 dlinaQSelector.addEventListener("input", (e) => {
   shirina = e.target.value;
