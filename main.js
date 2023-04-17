@@ -39,6 +39,7 @@ popup.addEventListener("click", () => {
 
 // первый город
 
+
 async function getCity() {
   let response = await fetch(
     'https://api.boxberry.ru/json.php?token=d6f33e419c16131e5325cbd84d5d6000&method=PointsForParcels'
@@ -49,6 +50,7 @@ async function getCity() {
     finalList.push(citiesList[n].City);
   }
   return finalList;
+
 }
 
 //-------------------------------------------------
@@ -119,7 +121,7 @@ getCity().then((list) => {
 let vesQSelector = document.querySelector(".inputVes");
 
 vesQSelector.addEventListener("input", (e) => {
-  ves = e.target.value;
+  ves = e.target.value * 1000;
 });
 
 // длина посылки
